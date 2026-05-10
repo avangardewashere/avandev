@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PhoneFrame } from "../components/PhoneFrame";
 import { TallyMock } from "../components/TallyMock";
 import { PlanMock } from "../components/PlanMock";
@@ -76,8 +77,14 @@ export function Projects() {
                 ))}
               </div>
               <div className="project-info__links">
-                <a href="#">Read the case study</a>
-                <a href="#">GitHub</a>
+                <Link href="/work/tallytappy">Read the case study</Link>
+                <a
+                  href="https://github.com/avangardewashere"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub
+                </a>
               </div>
             </div>
             <div className="device-stage">
@@ -117,8 +124,14 @@ export function Projects() {
                 )}
               </div>
               <div className="project-info__links">
-                <a href="#">Read the case study</a>
-                <a href="#">GitHub</a>
+                <Link href="/work/plan-it">Read the case study</Link>
+                <a
+                  href="https://github.com/avangardewashere"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub
+                </a>
               </div>
             </div>
             <div className="device-stage">
