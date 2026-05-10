@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# avandev — Avel Panaligan's portfolio
 
-## Getting Started
+Personal portfolio site. One page, scroll-driven, hand-written CSS, GSAP for choreography.
 
-First, run the development server:
+![Status](https://img.shields.io/badge/status-v0.1.0-brightgreen)
+![Stack](https://img.shields.io/badge/stack-Next.js%2016%20•%20React%2019%20•%20GSAP-blue)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## What's here (v0.1)
+
+A single landing page composed of six scroll-driven sections:
+
+1. **Hero** — pinned, with a sun that rises through the viewport and docks behind the navbar
+2. **About** — narrative + animated stat counters
+3. **Skills** — grouped pill rows with staggered reveals
+4. **Projects** — horizontal pin-track gallery showcasing TallyTappy and Plan.it
+5. **Path** — six-stop timeline of companies, with a progress bar that fills as you scroll past
+6. **Contact** — email + GitHub + LinkedIn, dawn gradient background
+
+## Stack
+
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 16 (App Router, Turbopack) |
+| UI | React 19 + TypeScript strict |
+| Styling | Tailwind 4 (`@theme inline` tokens) + hand-written section CSS |
+| Animation | **GSAP 3** + ScrollTrigger + ScrollToPlugin (the new tech for this project) |
+| Fonts | Geist + Instrument Sans + JetBrains Mono (`next/font/google`) |
+| Class merge | `clsx` |
+
+## Architecture
+
+MVVM, same discipline as the other personal projects in this lineage (TallyTappy → Plan.it → this one).
+
+```
+Page → View → ViewModel → DOM/GSAP
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `app/page.tsx` is three lines — calls `<PortfolioView />`
+- `features/portfolio/views/PortfolioView.tsx` composes the seven section components and runs the ViewModel hook
+- `features/portfolio/viewmodels/usePortfolioViewModel.ts` owns every GSAP timeline. Sections themselves are pure presentation
+- All `gsap*` imports go through `lib/gsap.ts`, the `'use client'` barrel that registers ScrollTrigger and ScrollToPlugin once for the whole project
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Static content (stats, skill pills, timeline stops, contact info) lives in `features/portfolio/data.ts` so the same source can feed an eventual print route or résumé export.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Running
 
-## Learn More
+```bash
+npm install
+npm run dev      # → http://localhost:3000
+npm run build    # production build
+npm run lint
+```
 
-To learn more about Next.js, take a look at the following resources:
+## What's not in v0.1 (v0.2 backlog)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/print` route mirroring the print HTML in the design source
+- Long-form case studies at `/work/[slug]` for TallyTappy + Plan.it (the markdowns already exist alongside this repo)
+- Mobile nav (links collapse to hamburger under 720 px)
+- Real LinkedIn URL + a real domain
+- OG image at `app/opengraph-image.png`
