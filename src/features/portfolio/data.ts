@@ -4,25 +4,25 @@
  */
 
 export const HERO = {
-  eyebrow: "Frontend engineer · Metro Manila · Open to remote",
+  eyebrow: "Frontend developer · Metro Manila · Open to remote",
   // Each word becomes a span; accent words get the dawn-blue highlight.
   titleWords: [
-    { text: "Software,", accent: false },
-    { text: "built", accent: false },
-    { text: "for", accent: false },
+    { text: "Building", accent: false },
+    { text: "with", accent: false },
     { text: "the", accent: false },
-    { text: "long", accent: true },
-    { text: "arc.", accent: true },
+    { text: "sharpest", accent: true },
+    { text: "tools", accent: true },
+    { text: "today.", accent: false },
   ],
   sub: (
-    "I'm Avel Panaligan — three years shipping React, Next.js and Vue across " +
-    "fintech, real-time gaming, and multi-platform mini programs. Quiet engineering " +
-    "on products that have to work in production from day one."
+    "I'm Avel Panaligan — a frontend developer who stays on the current stack, not the " +
+    "familiar one. React 19, Next.js, motion, strict TypeScript — chosen for what ships " +
+    "in production now, and refreshed as the ecosystem moves."
   ),
   meta: [
-    "3+ years frontend",
-    "5 platforms shipped",
-    "WebSocket · Next.js · React · Vue",
+    "Latest stack · Next.js · React · GSAP",
+    "3+ years shipping production UI",
+    "Real-time · fintech · mini programs",
     "Currently at Technicare",
   ],
   clientStrip: "TECHNICARE · SNSOFT · SOFTIFY · WBRIDGES · EXPRESSPAY",
