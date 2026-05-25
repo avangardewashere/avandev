@@ -5,6 +5,7 @@ import { Hero } from "../sections/Hero";
 import { About } from "../sections/About";
 import { Skills } from "../sections/Skills";
 import { Projects } from "../sections/Projects";
+import { ClientWork } from "../sections/ClientWork";
 import { Companies } from "../sections/Companies";
 import { Contact } from "../sections/Contact";
 import { usePortfolioViewModel } from "../viewmodels/usePortfolioViewModel";
@@ -25,6 +26,7 @@ export function PortfolioView() {
       <About />
       <Skills />
       <Projects />
+      <ClientWork />
       <Companies />
       <Contact />
     </>

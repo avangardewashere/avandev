@@ -16,7 +16,6 @@ export function Nav() {
 
   return (
     <nav className="nav is-dawn" id="nav" data-screen-label="Nav">
-      <div className="nav__sun" aria-hidden />
       <div className="container">
         <a href="#top" className="nav__brand" onClick={() => setOpen(false)}>
           <span className="nav__dot" id="navDot" />
@@ -39,6 +38,7 @@ export function Nav() {
           <a href="#about" onClick={() => setOpen(false)}>About</a>
           <a href="#skills" onClick={() => setOpen(false)}>Skills</a>
           <a href="#projects" onClick={() => setOpen(false)}>Work</a>
+          <a href="#clientwork" onClick={() => setOpen(false)}>Client</a>
           <a href="#companies" onClick={() => setOpen(false)}>Path</a>
           <a
             href="/resume/Resume_Avel_Panaligan.pdf"

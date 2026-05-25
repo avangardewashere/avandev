@@ -2,7 +2,7 @@ import { TIMELINE } from "../data";
 
 export function Companies() {
   return (
-    <section className="companies" id="companies" data-screen-label="05 Path">
+    <section className="companies" id="companies" data-screen-label="06 Path">
       <div className="container">
         <div className="companies__head">
           <div className="section-eyebrow gs-reveal">The path so far</div>

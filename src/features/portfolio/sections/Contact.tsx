@@ -2,7 +2,7 @@ import { CONTACT } from "../data";
 
 export function Contact() {
   return (
-    <section className="contact" id="contact" data-screen-label="06 Contact">
+    <section className="contact" id="contact" data-screen-label="07 Contact">
       <div className="contact__bg" />
       <div className="contact__inner container">
         <div

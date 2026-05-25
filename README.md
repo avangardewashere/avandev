@@ -7,14 +7,15 @@ Personal portfolio site. One page, scroll-driven, hand-written CSS, GSAP for cho
 
 ## What's here (v0.1)
 
-A single landing page composed of six scroll-driven sections:
+A single landing page composed of seven scroll-driven sections:
 
 1. **Hero** — pinned, with a sun that rises through the viewport and docks behind the navbar
 2. **About** — narrative + animated stat counters
 3. **Skills** — grouped pill rows with staggered reveals
 4. **Projects** — horizontal pin-track gallery showcasing TallyTappy and Plan.it
-5. **Path** — six-stop timeline of companies, with a progress bar that fills as you scroll past
-6. **Contact** — email + GitHub + LinkedIn, dawn gradient background
+5. **Client work** — second horizontal pin-track wall of eight employment engagements (OKFUN, Casino Plus, GCash, Casino Web, Mini Programs, Vue→React, Malmö Maids, ExpressPay)
+6. **Path** — six-stop timeline of companies, with a progress bar that fills as you scroll past
+7. **Contact** — email + GitHub + LinkedIn, dawn gradient background
 
 ## Stack
 
@@ -36,7 +37,7 @@ Page → View → ViewModel → DOM/GSAP
 ```
 
 - `app/page.tsx` is three lines — calls `<PortfolioView />`
-- `features/portfolio/views/PortfolioView.tsx` composes the seven section components and runs the ViewModel hook
+- `features/portfolio/views/PortfolioView.tsx` composes the eight section components and runs the ViewModel hook
 - `features/portfolio/viewmodels/usePortfolioViewModel.ts` owns every GSAP timeline. Sections themselves are pure presentation
 - All `gsap*` imports go through `lib/gsap.ts`, the `'use client'` barrel that registers ScrollTrigger and ScrollToPlugin once for the whole project
 

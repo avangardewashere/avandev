@@ -68,6 +68,9 @@ export function usePortfolioViewModel() {
       }
 
       // ---------- HERO PIN ----------
+      // NOTE: every tween here uses fromTo with the post-intro "rest" state as
+      // its `from` so scrubbing back to progress 0 restores the hero copy even
+      // though the intro timeline only ran once on mount.
       gsap.timeline({
         scrollTrigger: {
           trigger: ".hero",
@@ -85,14 +88,14 @@ export function usePortfolioViewModel() {
           onEnterBack: () => setNavMode("dawn"),
         },
       })
-        .to("#heroSun", { y: () => -window.innerHeight * 0.45, scale: 0.7, ease: "power1.inOut" }, 0)
-        .to("#heroStars", { yPercent: -20, opacity: 0.3, ease: "none" }, 0)
-        .to("#heroTitle", { yPercent: -30, opacity: 0.55, ease: "power2.in" }, 0.35)
-        .to("#heroSub", { yPercent: -45, opacity: 0, ease: "power2.in" }, 0.35)
-        .to("#heroMeta", { yPercent: -65, opacity: 0, ease: "power2.in" }, 0.35)
-        .to("#heroBottom", { yPercent: 80, opacity: 0, ease: "power2.in" }, 0.35)
+        .fromTo("#heroSun", { y: 0, scale: 1 }, { y: () => -window.innerHeight * 0.45, scale: 0.7, ease: "power1.inOut", immediateRender: false }, 0)
+        .fromTo("#heroStars", { yPercent: 0, opacity: 1 }, { yPercent: -20, opacity: 0.3, ease: "none", immediateRender: false }, 0)
+        .fromTo("#heroTitle", { yPercent: 0, opacity: 1 }, { yPercent: -30, opacity: 0.55, ease: "power2.in", immediateRender: false }, 0.35)
+        .fromTo("#heroSub", { yPercent: 0, opacity: 1 }, { yPercent: -45, opacity: 0, ease: "power2.in", immediateRender: false }, 0.35)
+        .fromTo("#heroMeta", { yPercent: 0, opacity: 1 }, { yPercent: -65, opacity: 0, ease: "power2.in", immediateRender: false }, 0.35)
+        .fromTo("#heroBottom", { yPercent: 0, opacity: 1 }, { yPercent: 80, opacity: 0, ease: "power2.in", immediateRender: false }, 0.35)
         .to("#heroSun", { y: () => -window.innerHeight * 0.95, scale: 0.42, ease: "power2.inOut" }, 0.5)
-        .to("#heroBg", { opacity: 0.85, ease: "none" }, 0.7)
+        .fromTo("#heroBg", { opacity: 1 }, { opacity: 0.85, ease: "none", immediateRender: false }, 0.7)
         .to("#heroTitle", { opacity: 0, ease: "none" }, 0.85);
 
       // Contact section forces dawn nav state too
@@ -239,6 +242,54 @@ export function usePortfolioViewModel() {
           });
         };
         requestAnimationFrame(setupHorizontalScroll);
+      }
+
+      // ---------- CLIENT WORK — pinned horizontal scroll ----------
+      const cwTrack = document.getElementById("clientworkTrack");
+      const cwPin = document.getElementById("clientworkPin");
+      const cwRailFill = document.getElementById("hRailFillClient");
+
+      if (cwTrack && cwPin) {
+        const setupClientHorizontalScroll = () => {
+          const totalScrollWidth = cwTrack.scrollWidth;
+          const viewportW = window.innerWidth;
+          const moveDistance = totalScrollWidth - viewportW;
+          if (moveDistance <= 0) return;
+
+          gsap.to(cwTrack, {
+            x: () => -moveDistance,
+            ease: "none",
+            scrollTrigger: {
+              trigger: cwPin,
+              start: "top top",
+              end: () => `+=${moveDistance + window.innerHeight * 0.3}`,
+              pin: true,
+              scrub: 0.8,
+              invalidateOnRefresh: true,
+              onUpdate: (self) => {
+                if (cwRailFill) {
+                  cwRailFill.style.width = (self.progress * 100).toFixed(2) + "%";
+                }
+              },
+            },
+          });
+
+          document.querySelectorAll("[data-client-card]").forEach((card) => {
+            gsap.fromTo(
+              card,
+              { y: 40, opacity: 0, scale: 0.96 },
+              {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.9,
+                ease: "power3.out",
+                scrollTrigger: { trigger: card, start: "top 80%" },
+              },
+            );
+          });
+        };
+        requestAnimationFrame(setupClientHorizontalScroll);
       }
 
       // ---------- TallyTappy increment animation when in view ----------

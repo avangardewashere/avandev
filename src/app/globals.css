@@ -446,19 +446,6 @@ a:hover, .link:hover {
   .nav.is-canvas .nav__cta { background: #FFE7B4; color: #1A2440 !important; }
   .nav.is-canvas .nav__cta:hover { background: #fff; box-shadow: 0 8px 24px rgba(255, 255, 255, 0.18); }
 
-  /* Docked sun — glows behind the nav after the hero finishes pinning. */
-  .nav__sun {
-    position: absolute; left: 50%; top: 100%;
-    transform: translate(-50%, -52%);
-    width: 160px; height: 160px; border-radius: 999px;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 230, 178, 0.85) 0%, rgba(241, 218, 165, 0.45) 30%, rgba(183, 121, 31, 0.18) 55%, transparent 72%);
-    filter: blur(2px);
-    opacity: 0; pointer-events: none;
-    transition: opacity 600ms var(--ease-out-soft);
-    z-index: -1;
-  }
-  .nav.is-canvas .nav__sun { opacity: 1; }
-
   /* ----- Scroll progress dot (right edge) ----- */
   .scroll-dot {
     position: fixed; right: 28px; top: 50%; transform: translateY(-50%);
@@ -972,6 +959,161 @@ a:hover, .link:hover {
   .h-rail__labels { display: flex; justify-content: space-between; margin-top: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-stone); font-weight: 500; }
 
   /* ============================================================
+     CLIENT WORK — pinned horizontal scroll (employment showcase)
+     ============================================================ */
+  .clientwork {
+    background: var(--color-canvas);
+    overflow: hidden;
+    position: relative;
+  }
+  .clientwork__heading {
+    padding: 144px 0 80px;
+  }
+  .clientwork__heading h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.05; letter-spacing: -0.035em;
+    font-weight: 500; margin: 0 0 24px;
+    max-width: 900px;
+  }
+  .clientwork__heading p {
+    font-size: 18px; max-width: 640px; color: var(--color-stone); margin: 0;
+  }
+
+  .clientwork__pin {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .clientwork__track {
+    display: flex; flex-wrap: nowrap;
+    height: 100%;
+    will-change: transform;
+  }
+  .clientwork__panel {
+    flex: 0 0 100vw;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items: center;
+    gap: 80px;
+    padding: 0 80px;
+    position: relative;
+  }
+  .clientwork__panel--intro,
+  .clientwork__panel--outro {
+    flex: 0 0 60vw;
+    grid-template-columns: 1fr;
+    align-items: center;
+    padding: 0 80px;
+  }
+  .clientwork__panel-num {
+    position: absolute; top: 80px; left: 80px;
+    font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
+    color: var(--color-emerald);
+  }
+  .clientwork__panel-num small { color: var(--color-stone); margin-left: 8px; }
+
+  .clientwork__outro {
+    text-align: center; max-width: 600px; margin: 0 auto;
+  }
+  .clientwork__outro h3 {
+    font-size: clamp(2rem, 3.4vw, 2.75rem); font-weight: 500; letter-spacing: -0.025em; line-height: 1.1; margin: 0 0 18px;
+  }
+  .clientwork__outro p {
+    font-size: 17px; color: var(--color-stone); line-height: 1.55; margin: 0 0 28px;
+  }
+
+  /* Right-hand credentials plate (replaces the device mockup) */
+  .client-stage {
+    position: relative; width: 100%; height: 88%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .client-stage::before {
+    content: ""; position: absolute; inset: 8% 12%;
+    background: radial-gradient(ellipse at 50% 60%, rgba(68, 88, 168, 0.10), transparent 65%);
+    z-index: 0;
+  }
+
+  .client-card {
+    --client-accent: var(--color-emerald);
+    position: relative;
+    width: min(420px, 38vw);
+    background: #fff;
+    border: 0.5px solid var(--color-card-border);
+    border-radius: 20px;
+    padding: 32px 32px 28px;
+    box-shadow:
+      0 30px 60px rgba(13, 42, 74, 0.12),
+      0 10px 20px rgba(15, 42, 30, 0.06),
+      inset 0 0 0 0.5px rgba(255,255,255,0.5);
+    z-index: 2;
+    overflow: hidden;
+  }
+  .clientwork__panel[data-accent="blue"] .client-card { --client-accent: #176394; }
+  .clientwork__panel[data-accent="stone"] .client-card { --client-accent: #5A6478; }
+  .clientwork__panel[data-accent="emerald"] .client-card { --client-accent: var(--color-emerald); }
+
+  .client-card__stripe {
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: var(--client-accent);
+  }
+  .client-card__mark {
+    font-size: clamp(1.4rem, 2vw, 1.75rem);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: var(--color-ink);
+    margin: 8px 0 6px;
+  }
+  .client-card__kicker {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--client-accent);
+    font-weight: 600;
+    margin: 0 0 20px;
+  }
+  .client-card__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .client-card__bullets li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--color-stone);
+  }
+  .client-card__bullets li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--client-accent);
+    opacity: 0.7;
+  }
+  .client-card__corner {
+    position: absolute;
+    right: 16px;
+    bottom: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--color-stone);
+    opacity: 0.55;
+  }
+
+  /* Reuse the existing dot variants for the title accent */
+  .project-info__title .dot--stone { background: #5A6478; }
+
+  /* ============================================================
      COMPANIES timeline
      ============================================================ */
   .companies {
@@ -1100,6 +1242,10 @@ a:hover, .link:hover {
     .skill-row { grid-template-columns: 1fr; gap: 16px; }
     .projects__panel { grid-template-columns: 1fr; gap: 32px; padding: 80px 32px; flex: 0 0 100vw; }
     .projects__panel-num { top: 32px; left: 32px; }
+    .clientwork__panel { grid-template-columns: 1fr; gap: 32px; padding: 80px 32px; flex: 0 0 100vw; }
+    .clientwork__panel-num { top: 32px; left: 32px; }
+    .client-card { width: 100%; max-width: 100%; }
+    .client-stage { height: auto; }
     .h-rail { left: 32px; right: 32px; }
     .device-stage { height: 60vh; }
     .timeline__stops { grid-template-columns: repeat(3, 1fr); row-gap: 56px; }

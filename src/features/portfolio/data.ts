@@ -141,6 +141,146 @@ export const TIMELINE: TimelineStop[] = [
   { year: "Now", company: "Technicare", role: "Chat monitoring platform built from scratch. Used by ops daily.", isNow: true },
 ];
 
+export type EmploymentProject = {
+  index: string;
+  name: string;
+  kicker: string;
+  year?: string;
+  hook: string;
+  bullets: string[];
+  chips: string[];
+  accent?: "emerald" | "blue" | "stone";
+};
+
+export const EMPLOYMENT: EmploymentProject[] = [
+  {
+    index: "01 / 08",
+    name: "OKFUN",
+    kicker: "Casino Web · Real-time",
+    year: "Technicare · 2024–2025",
+    hook:
+      "Web-based casino platform hosting slot machines, baccarat and similar games. Stable real-time gameplay and a polished, authentic casino UX across devices.",
+    bullets: [
+      "Designed and built the site from scratch with responsive, user-friendly UI.",
+      "Integrated multiple third-party game APIs with dynamic, real-time data.",
+      "Optimized for speed, responsiveness and accurate data presentation.",
+      "Maintained promotional banners, game content and event-driven features.",
+    ],
+    chips: ["React", "Mini Program IDE", "WebSocket", "REST APIs"],
+    accent: "emerald",
+  },
+  {
+    index: "02 / 08",
+    name: "Casino Plus",
+    kicker: "Telegram Bot + Web",
+    year: "SNSoft · 2025",
+    hook:
+      "Telegram bot integrated with a web app for onboarding, engagement, in-chat payments and a real-time admin dashboard.",
+    bullets: [
+      "Auto-login via Telegram Login Widget with secure token verification.",
+      "Integrated Telegram's native payment API for in-app purchases.",
+      "Built an admin dashboard for users, promotions, content and analytics.",
+      "Ensured secure auth and seamless bot-to-web communication.",
+    ],
+    chips: ["Node.js", "Express", "Telegram Bot API", "MongoDB", "Webhooks"],
+    accent: "blue",
+  },
+  {
+    index: "03 / 08",
+    name: "GCash Mini",
+    kicker: "Mobile Gaming · GCash SDK",
+    year: "Softify · 2024",
+    hook:
+      "Mobile-friendly gaming platform embedded in the GCash app. Coordinated directly with GCash partners to accelerate dev and resolve compliance issues.",
+    bullets: [
+      "Optimized state management and data integrity across components.",
+      "Integrated the gaming experience inside GCash via WebView.",
+      "Coordinated with GCash partners on integration and incident resolution.",
+      "Maintained security credentials and compliance updates.",
+    ],
+    chips: ["React", "Mini Program IDE", "WebView", "GCash SDK"],
+    accent: "stone",
+  },
+  {
+    index: "04 / 08",
+    name: "Casino Gaming Web",
+    kicker: "Marketing · Landing pages",
+    year: "Softify · 2023–2024",
+    hook:
+      "Casino gaming site with dynamic landing pages and platform-specific app download pages to support acquisition campaigns.",
+    bullets: [
+      "Implemented dynamic landing pages for marketing and acquisition.",
+      "Built Android and iOS download pages with tailored UX.",
+      "Managed deployment via PAGODA and AWS for stable releases.",
+      "Set up analytics and user-behavior tracking to lift conversion.",
+    ],
+    chips: ["React", "AWS", "PAGODA", "Analytics SDKs"],
+    accent: "emerald",
+  },
+  {
+    index: "05 / 08",
+    name: "Multi-Platform Mini Programs",
+    kicker: "Lazada · Maya · GCash · Viber",
+    year: "Softify · 2024",
+    hook:
+      "Built and maintained mini programs across Lazada, Maya and GCash using each platform's IDE — plus Viber apps for evolving services.",
+    bullets: [
+      "Built mini programs on Lazada, Maya and GCash with platform-specific tooling.",
+      "Used WebView for unified hosted-content integration across mini apps.",
+      "Maintained and updated Viber apps to support new services.",
+    ],
+    chips: ["Mini Program IDEs", "WebView", "JavaScript"],
+    accent: "blue",
+  },
+  {
+    index: "06 / 08",
+    name: "Vue → React Migration",
+    kicker: "Platform migration · SEO",
+    year: "WBridges · 2022–2023",
+    hook:
+      "Migrated a full product codebase from Vue 2 and vanilla HTML to React for better performance and scalability. Built an SEO-optimized static site with Puppeteer.js.",
+    bullets: [
+      "Led migration of an entire frontend codebase from Vue 2 to React.",
+      "Generated SEO-optimized static pages using Puppeteer.js.",
+      "Performed manual frontend deploys to AWS S3 via Cyberduck across UAT.",
+    ],
+    chips: ["Vue 2", "React", "Puppeteer.js", "AWS S3", "Cyberduck"],
+    accent: "emerald",
+  },
+  {
+    index: "07 / 08",
+    name: "Malmö Maids",
+    kicker: "Reservation · WordPress",
+    year: "Freelance · 2023",
+    hook:
+      "Responsive WordPress site for a Swedish cleaning services brand. Online booking, scheduling and multilingual support with brand-consistent theming.",
+    bullets: [
+      "Built a custom online booking system with service selection and scheduling.",
+      "Customized themes and plugins to match brand identity and UX.",
+      "Added Swedish + English multilingual support.",
+      "Configured SEO tools for strong local search visibility.",
+    ],
+    chips: ["WordPress", "Elementor", "GoHighLevel", "WooCommerce"],
+    accent: "stone",
+  },
+  {
+    index: "08 / 08",
+    name: "ExpressPay",
+    kicker: "Enterprise · Payments",
+    year: "ExpressPay · 2021–2022",
+    hook:
+      "Maintained and extended the legacy system used across all ExpressPay branches. Monthly archiving, security updates and digital payment integrations.",
+    bullets: [
+      "Maintained core services powering branch-level transactions nationwide.",
+      "Integrated PayMaya and GCash to extend digital payment coverage.",
+      "Performed monthly data archiving for system efficiency and compliance.",
+      "Implemented routine maintenance and security updates.",
+    ],
+    chips: ["PHP", "SQL", "PayMaya API", "GCash API"],
+    accent: "blue",
+  },
+];
+
 export const CONTACT = {
   email: "avel.panaligan@gmail.com",
   github: "https://github.com/avangardewashere",
