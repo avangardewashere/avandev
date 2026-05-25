@@ -41,14 +41,6 @@ export function Nav() {
           <a href="#clientwork" onClick={() => setOpen(false)}>Client</a>
           <a href="#companies" onClick={() => setOpen(false)}>Path</a>
           <a
-            href="/resume/Resume_Avel_Panaligan.pdf"
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => setOpen(false)}
-          >
-            Résumé
-          </a>
-          <a
             href={`mailto:${CONTACT.email}`}
             className="nav__cta"
             onClick={() => setOpen(false)}
